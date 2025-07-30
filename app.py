@@ -37,6 +37,8 @@ def set_background(menu_name):
         </style>
     """, unsafe_allow_html=True)
 
+# Panggil fungsi
+set_background_from_local("gambar.jpg")
 
 # Sidebar menu
 menu = st.sidebar.selectbox(
