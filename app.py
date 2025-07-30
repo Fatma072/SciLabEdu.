@@ -9,46 +9,45 @@ from sklearn.linear_model import LinearRegression
 st.set_page_config(page_title="SciLabEdu", layout="wide")
 
 # Tambahan latar belakang dengan tema kimia
-st.markdown(
-    """
-    <style>
-    /* Gaya umum halaman */
-    .stApp {
-        background-image: url('https://images.unsplash.com/photo-1581090700227-1e8d60b6f33b');  /* background lab/kimia */
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
+# Fungsi untuk mengatur background berbeda tiap menu
+def set_background(menu_name):
+    url_dict = {
+        "🏠 Beranda": "https://images.unsplash.com/photo-1581090700227-1e8d60b6f33b",
+        "🔬 Spektrofotometer": "https://images.unsplash.com/photo-1588776814546-ec7e4093f07e",
+        "🧴 Penanganan Bahan Kimia": "https://images.unsplash.com/photo-1600172454520-0c393eec6c96",
+        "🛡 Keselamatan Kerja (K3)": "https://images.unsplash.com/photo-1625720071675-2c3adf3edb41",
+        "🧰 Alat Dasar Lab": "https://images.unsplash.com/photo-1603386329225-868f9a77e1aa"
     }
 
-    /* Tambahkan overlay semi-transparan agar teks tetap terbaca */
-    .block-container {
-        background-color: rgba(255, 255, 255, 0.85);
-        padding: 2rem;
-        border-radius: 12px;
-    }
+    background_url = url_dict.get(menu_name, "")
+    st.markdown(f"""
+        <style>
+        .stApp {{
+            background-image: url('{background_url}');
+            background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }}
+        .block-container {{
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 2rem;
+            border-radius: 12px;
+        }}
+        h1, h2, h3 {{
+            color: #003366;
+            font-family: 'Trebuchet MS', sans-serif;
+        }}
+        p, li, .stMarkdown {{
+            color: #222;
+            font-size: 16px;
+        }}
+        button[kind="primary"] {{
+            background-color: #0e639c;
+            color: white;
+        }}
+        </style>
+    """, unsafe_allow_html=True)
 
-    /* Ubah font dan warna judul */
-    h1, h2, h3 {
-        color: #003366;
-        font-family: 'Trebuchet MS', sans-serif;
-    }
-
-    /* Warna teks umum */
-    p, li, .stMarkdown {
-        color: #222;
-        font-size: 16px;
-    }
-
-    /* Style tombol */
-    button[kind="primary"] {
-        background-color: #0e639c;
-        color: white;
-    }
-
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 
 # Sidebar menu
 menu = st.sidebar.selectbox(
