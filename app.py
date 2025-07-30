@@ -1,5 +1,9 @@
 from pathlib import Path
 
+# Simpan file ke direktori saat ini (aman untuk lokal & Streamlit Cloud)
+path = Path("simulator_kimia_app.py")
+path.write_text(streamlit_code)
+
 # Kode aplikasi Streamlit lengkap dengan semua menu dan background
 streamlit_code = """
 import streamlit as st
